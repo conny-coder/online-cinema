@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  nginx:
+    depends_on:
+      - api
+      - client
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - "3050:80"
+  api:
+    build:
+      dockerfile: Dockerfile
+      context: "./server"
+    volumes:
+      - /app/node_modules
+      - ./server:/app
+    environment:
+      - NODE_ENV=production
+      - MONGO_URI=mongodb+srv://Shkambula:Shkambulak2004@cinema.40egtty.mongodb.net/?retryWrites=true&w=majority
+      - JWT_SECRET=dgfafds235443tw
+  client:
+    stdin_open: true
+    environment:
+      - REACT_APP_URL=http://62.217.176.9
+      - REACT_APP_SERVER_URL=http://localhost:4200
+      - APP_ENV=production
+    build:
+      dockerfile: Dockerfile
+      context: ./client
+    volumes:
+      - /app/node_modules
+      - ./client:/app

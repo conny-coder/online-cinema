@@ -1,0 +1,16 @@
+{
+	"theme_color": "",
+	"background_color": "",
+	"scope": "/",
+	"start_url": "/",
+	"name": "Online Cinema",
+	"app_name": "Online Cinema",
+	"description": "Watch MovieApp",
+	"icons": [
+		{
+			"src": "/favicons/apple-touch-57x57.png",
+			"sizes": "57x57",
+			"type": "image/png"
+		}
+	]
+}
